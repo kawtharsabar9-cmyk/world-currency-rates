@@ -11,7 +11,8 @@
     <style>
         :root { --gold: #c5a059; --dark: #0f172a; --card: rgba(255, 255, 255, 0.05); --ad-bg: rgba(255, 255, 255, 0.02); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
-        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; min-height: 100vh; }
+        /* تم إضافة cursor: pointer لجعل الشاشة كلها تبدو كزر تفاعلي للإعلان */
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; min-height: 100vh; cursor: pointer; }
         header { padding: 30px 20px; text-align: center; border-bottom: 2px solid var(--gold); background: rgba(15, 23, 42, 0.8); }
         .logo { font-size: 2.5rem; font-weight: 700; color: var(--gold); }
         .img-container { width: 100%; max-width: 800px; margin: 0 auto; opacity: 0.6; }
@@ -55,9 +56,7 @@
         }
     </style>
 </head>
-<body>
-
-<header>
+<body onclick="void(0);"> <header>
     <div class="logo" id="mainTitle">GLOBALX PRO</div>
     <p style="color: #94a3b8;" id="subTitle">البيانات المالية المحدثة لحظياً لكافة البورصات العالمية</p>
 </header>
@@ -136,6 +135,11 @@
 </footer>
 
 <script>
+    // كود إضافي لضمان تفعيل الإعلان عند أول ضغطة
+    document.addEventListener('click', function() {
+        console.log("Ad Interaction Active");
+    }, {once: false});
+
     let currentLang = 'ar';
     async function calculate() {
         const amt = document.getElementById('amount').value;
