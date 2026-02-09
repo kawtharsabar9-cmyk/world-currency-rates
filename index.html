@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlobalX Pro | المنصة المالية العالمية</title>
     
-    <script src="https://pl28679629.effectivegatecpm.com/5f/4a/cc/5f4acccab55bd0f346aab5f4e151034b.js"></script>
+    <script type='text/javascript' src='//pl28679629.effectivegatecpm.com/5f/4a/cc/5f4acccab55bd0f346aab5f4e151034b.js'></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -18,7 +18,6 @@
         .currency-img { width: 100%; height: auto; border-radius: 0 0 50px 50px; }
         .container { max-width: 1000px; margin: -50px auto 20px; padding: 20px; position: relative; z-index: 5; }
         
-        /* التعديل الجديد لجعل الإعلان متناسقاً */
         .ad-space { 
             background: var(--ad-bg); 
             border: 1px dashed rgba(197, 160, 89, 0.2); 
@@ -46,11 +45,10 @@
         .status-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; margin-top: 10px; background: rgba(255,255,255,0.05); color: var(--gold); border: 1px solid var(--gold); }
         footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; }
 
-        /* تعديلات الموبايل لضمان عدم خروج الإعلان عن الشاشة */
         @media (max-width: 768px) {
             .ad-space iframe {
                 max-width: 100% !important;
-                transform: scale(0.9); /* تصغير بسيط ليناسب الموبايل */
+                transform: scale(0.9);
             }
             .converter-card { padding: 20px; }
             .res-value { font-size: 2rem; }
@@ -78,7 +76,6 @@
                 'width' : 728,
                 'params' : {}
             };
-            // كود ذكي لتصغير الإعلان إذا كانت الشاشة صغيرة (موبايل)
             if (window.innerWidth < 768) {
                 atOptions.width = 320;
                 atOptions.height = 50;
@@ -140,19 +137,6 @@
 
 <script>
     let currentLang = 'ar';
-    const currencyNames = {
-        'USD': {ar: 'دولار أمريكي', en: 'US Dollar'},
-        'EUR': {ar: 'يورو', en: 'Euro'},
-        'SAR': {ar: 'ريال سعودي', en: 'Saudi Riyal'},
-        'AED': {ar: 'درهم إماراتي', en: 'UAE Dirham'},
-        'SDG': {ar: 'جنيه سوداني', en: 'Sudanese Pound'},
-        'GBP': {ar: 'جنيه إسترليني', en: 'British Pound'},
-        'TRY': {ar: 'ليرة تركية', en: 'Turkish Lira'},
-        'BTC': {ar: 'بيتكوين', en: 'Bitcoin'},
-        'EGP': {ar: 'جنيه مصري', en: 'Egyptian Pound'},
-        'QAR': {ar: 'ريال قطري', en: 'Qatari Riyal'}
-    };
-
     async function calculate() {
         const amt = document.getElementById('amount').value;
         const from = document.getElementById('from').value;
