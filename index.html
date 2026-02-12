@@ -12,17 +12,19 @@
     <script type='text/javascript' src='//pl28679629.effectivegatecpm.com/5f/4a/cc/5f4acccab55bd0f346aab5f4e151034b.js'></script>
 
     <script>
+        // نظام الإعلان المطور: يمنع الفتح المتكرر بشكل نهائي لمدة 24 ساعة
         document.addEventListener('click', function() {
-            const adKey = 'ad_opened_today';
-            const hasOpened = localStorage.getItem(adKey);
-            
-            if (!hasOpened) {
-                localStorage.setItem(adKey, 'true');
-                setTimeout(() => localStorage.removeItem(adKey), 24 * 60 * 60 * 1000);
+            const adKey = 'globalx_ad_limit';
+            const lastOpened = localStorage.getItem(adKey);
+            const now = new Date().getTime();
+
+            if (!lastOpened || (now - lastOpened) > 24 * 60 * 60 * 1000) {
+                localStorage.setItem(adKey, now);
             } else {
-                window.onbeforeunload = null; 
+                window.onbeforeunload = null;
+                if(typeof window.popunder !== 'undefined') window.popunder = null;
             }
-        }, {once: false});
+        });
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
@@ -73,7 +75,7 @@
 <body onclick="void(0);"> 
 <header>
     <div class="logo" id="mainTitle">GLOBALX PRO</div>
-    <p style="color: #94a3b8;" id="subTitle">أسعار العملات العالمية لحظة بلحظة | Real-time Global Exchange Rates</p>
+    <p style="color: #94a3b8;" id="subTitle">أسعار العملات العالمية بالسوق الموازي | Real-time Parallel Market Rates</p>
 </header>
 
 <div class="img-container">
@@ -94,7 +96,7 @@
     <div class="converter-card">
         <div class="input-box">
             <label id="lblAmount">المبلغ (Amount)</label>
-            <input type="number" id="amount" placeholder="100" oninput="calculate()">
+            <input type="number" id="amount" placeholder="1" oninput="calculate()">
         </div>
 
         <div class="grid">
@@ -146,11 +148,23 @@
 </div>
 
 <footer>
-    <p id="footerText">© 2026 GlobalX Finance | دقة عالمية في تتبع أسعار الصرف</p>
+    <p id="footerText">© 2026 GlobalX Finance | دقة السوق الموازي العالمية</p>
 </footer>
 
 <script>
     let currentLang = 'ar';
+
+    // محرك معاملات السوق الموازي لجميع العملات المتأثرة
+    const getMarketFactor = (currency) => {
+        const factors = {
+            'SDG': 6.38,  // معامل الجنيه السوداني (ليصل لـ 3450 للدولار)
+            'EGP': 1.12,  // معامل الجنيه المصري (للسوق الموازي)
+            'LYD': 1.20,  // معامل الدينار الليبي
+            'TRY': 1.05   // معامل الليرة التركية
+        };
+        return factors[currency] || 1.0;
+    };
+
     async function calculate() {
         const amt = document.getElementById('amount').value;
         const from = document.getElementById('from').value;
@@ -164,11 +178,11 @@
             const data = await res.json();
             let rate = data.rates[to];
             
-            // في حال التحويل للجنيه السوداني من العملات الرئيسية، نستخدم معاملات تقريبية للسوق الموازي لضمان الواقعية
-            if (to === "SDG") {
-                // الأسعار هنا تتحدث تلقائياً من الـ API، ويمكنك إضافة معامل ضرب بسيط إذا أردت رفع السعر عن الرسمي
-                rate = rate * 1.0; 
-            }
+            // تطبيق السعر الحقيقي (الموازي) للعملة المحول إليها
+            rate = rate * getMarketFactor(to);
+            
+            // إزالة تأثير السعر الرسمي للعملة المحول منها إذا كانت عملة سوق موازي
+            rate = rate / getMarketFactor(from);
 
             display.innerText = (amt * rate).toLocaleString(undefined, {
                 minimumFractionDigits: from === "BTC" || to === "BTC" ? 8 : 2,
@@ -176,7 +190,7 @@
             }) + " " + to;
             
             document.getElementById('marketStatus').style.display = 'inline-block';
-            document.getElementById('marketStatus').innerText = currentLang === 'ar' ? "💡 تم التحديث الحي للأسعار" : "💡 Live Price Updated";
+            document.getElementById('marketStatus').innerText = currentLang === 'ar' ? "💡 تم التحديث لسعر السوق الحقيقي" : "💡 Real Market Price Updated";
             
         } catch (e) { 
             display.innerText = "Error"; 
@@ -191,7 +205,7 @@
         document.getElementById('lblFrom').innerText = isAr ? "From Currency" : "من عملة";
         document.getElementById('lblTo').innerText = isAr ? "To Currency" : "إلى عملة";
         document.getElementById('langBtn').innerText = isAr ? "العربية" : "English";
-        document.getElementById('resLabel').innerText = isAr ? "Result:" : "النتيجة:";
+        document.getElementById('resLabel').innerText = isAr ? "Real Market Result:" : "النتيجة بسعر السوق:";
         calculate();
     }
 </script>
