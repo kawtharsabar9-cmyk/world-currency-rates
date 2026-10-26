@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+   <!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSpark | معرض أعمال مصمم ومطور الويب</title>
+    <title id="page-title">WebSpark | معرض أعمال مصمم ومطور الويب</title>
 
     <!-- خط كايرو العربي من Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* شاشة التحميل والدخول (Splash Screen) بلون الخلفية المطلوب #2b2b2b */
+        /* شاشة التحميل والدخول (Splash Screen) */
         /* ------------------------------------------------------------- */
         #splash-screen {
             position: fixed;
@@ -53,7 +53,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #2b2b2b; /* اللون المطلوب لخلفية شاشة الدخول */
+            background-color: #2b2b2b;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -73,7 +73,7 @@
         }
 
         .splash-logo-img {
-            width: 280px; /* حجم كبير وواضح للصورة المطلوبة مع الرمز والنصوص */
+            width: 280px;
             height: auto;
             max-width: 85vw;
             border-radius: 16px;
@@ -86,7 +86,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* خلفية نيون مطابقة تماماً للصورة الأولى (خطوط حادة مائلة ومضيئة) */
+        /* خلفية نيون مائلة مضاءة */
         /* ------------------------------------------------------------- */
         .neon-background-container {
             position: fixed;
@@ -100,7 +100,6 @@
             background: radial-gradient(circle at 50% 40%, #121824 0%, #07090e 100%);
         }
 
-        /* خط نيون أزرق مائل في الجانب الأيسر علوي */
         .neon-line-left {
             position: absolute;
             top: -20vh;
@@ -124,7 +123,6 @@
             opacity: 0.8;
         }
 
-        /* خط نيون بنفسجي مائل في الجانب الأيمن سفلي */
         .neon-line-right {
             position: absolute;
             bottom: -20vh;
@@ -196,7 +194,7 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         nav a {
@@ -212,7 +210,23 @@
             text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
         }
 
-        /* دوائر السوشيال ميديا المضيئة */
+        /* زر تبديل اللغة */
+        .lang-btn {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--cyan-neon);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background: var(--cyan-neon);
+            color: #0b0f17;
+        }
+
         .social-icons-header {
             display: flex;
             gap: 10px;
@@ -277,7 +291,7 @@
         /* القسم الرئيسي (Hero Section) */
         .hero {
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 80px 20px 40px;
             position: relative;
         }
 
@@ -346,7 +360,288 @@
             transform: translateY(-3px);
         }
 
-        /* قسم المعرض المتحرك للمشاريع */
+        /* ------------------------------------------------------------- */
+        /* قسم العروض الخاصة (Special Offers) */
+        /* ------------------------------------------------------------- */
+        .special-offers-section {
+            padding: 20px 6%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .special-offers-header {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--cyan-neon);
+            margin-bottom: 15px;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .special-offers-header::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--cyan-neon);
+            border-radius: 4px;
+        }
+
+        .fixed-discount-banner {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.15);
+            background: #121822;
+            transition: transform 0.3s ease;
+        }
+
+        .fixed-discount-banner:hover {
+            transform: translateY(-4px);
+            border-color: var(--cyan-neon);
+        }
+
+        .fixed-discount-banner img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* قسم الأقسام والدوائر (Categories) */
+        /* ------------------------------------------------------------- */
+        .app-categories-section {
+            padding: 25px 6%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .app-categories-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 15px;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-categories-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--purple-neon);
+            border-radius: 4px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 15px 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .category-card:hover {
+            border-color: var(--cyan-neon);
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+        }
+
+        .category-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 10px auto;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan-neon);
+            font-size: 1.3rem;
+        }
+
+        .category-card h4 {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* سلايدر الصور (App Banner Slider) */
+        /* ------------------------------------------------------------- */
+        .categories-marquee-section {
+            padding: 25px 6%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .categories-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .categories-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--purple-neon);
+            border-radius: 4px;
+        }
+
+        .banner-swiper-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 35px !important;
+        }
+
+        .banner-slide-item {
+            width: 100%;
+            height: 280px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #161b22;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .banner-slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 22px;
+            border-radius: 10px;
+            background: #ff3b30 !important;
+            box-shadow: 0 0 10px rgba(255, 59, 48, 0.8);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* قسم خدماتي (Services Section) */
+        /* ------------------------------------------------------------- */
+        .services-section {
+            padding: 70px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 30px 20px;
+            text-align: right;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .service-box:hover {
+            transform: translateY(-6px);
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan-neon);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-box h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .service-box p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* أزرار فلترة المشاريع (Project Filter) */
+        /* ------------------------------------------------------------- */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--cyan-neon);
+            color: #0b0f17;
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        /* قسم المعرض المتحرك للمشاريع والفيديوهات */
         .portfolio-section {
             padding: 70px 20px;
         }
@@ -370,7 +665,6 @@
             padding: 20px 10px 45px !important;
         }
 
-        /* بطاقات المشاريع الفخمة */
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -395,28 +689,10 @@
             background: #161b22;
         }
 
-        .card-media img, 
         .card-media video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .card-media img {
-            transform: scale(1.05);
-        }
-
-        .preview-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover .preview-video {
-            opacity: 1;
         }
 
         .card-info {
@@ -571,7 +847,7 @@
             border: 1px solid rgba(243, 85, 218, 0.2);
         }
 
-        /* قسم السيرة الذاتية (About & CV) بخلفية متناسقة وشافة */
+        /* قسم السيرة الذاتية (About & CV) */
         .about-cv-section {
             padding: 90px 8%;
             background: rgba(15, 20, 30, 0.4);
@@ -811,19 +1087,21 @@
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1rem; }
             .cta-buttons { flex-direction: column; padding: 0 20px; }
+            .banner-slide-item { height: 200px; }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <!-- شاشة التحميل والدخول (Splash Screen) بالصورة الجديدة وخلفية #2b2b2b -->
+    <!-- شاشة التحميل والدخول (Splash Screen) -->
     <div id="splash-screen">
         <div class="splash-logo-container">
             <img src="1792999247500.jpg" alt="WebSpark Logo" class="splash-logo-img">
         </div>
     </div>
 
-    <!-- الخلفية الموحدة مع خطوط وزوايا النيون المائلة المضاءة (مطابقة للصورة الأولى) -->
+    <!-- خلفية نيون مائلة مضاءة -->
     <div class="neon-background-container">
         <div class="neon-line-left"></div>
         <div class="neon-glow-line-cyan"></div>
@@ -831,9 +1109,7 @@
         <div class="neon-glow-line-pink"></div>
     </div>
 
-    <!-- شريط الملاحة والهيدر born
-    
--->
+    <!-- شريط الملاحة والهيدر -->
     <header>
         <a href="#" class="logo-container">
             <img src="1792999247500.jpg" alt="WebSpark Logo" class="logo-img-header">
@@ -843,15 +1119,14 @@
             </div>
         </a>
 
-        <!-- أيقونات السوشيال ميديا في الهيدر -->
         <div class="social-icons-header">
             <a href="https://wa.me/249996605719" target="_blank" class="social-circle whatsapp" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://instagram.com" target="_blank" class="social-circle instagram" title="انستغرام"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://facebook.com" target="_blank" class="social-circle facebook" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://tiktok.com" target="_blank" class="social-circle tiktok" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
         </div>
 
-        <!-- زر القائمة الثلاثية للموبايل -->
         <button class="menu-toggle" id="mobile-menu" aria-label="فتح القائمة">
             <span></span>
             <span></span>
@@ -859,25 +1134,25 @@
         </button>
 
         <nav id="nav-menu">
-            <a href="#" class="active">الرئيسية</a>
-            <a href="#projects">المشاريع</a>
-            <a href="#about">سيرتي الذاتية</a>
-            <a href="#trust">آراء العملاء</a>
-            <a href="#contact">تواصل معي</a>
+            <a href="#" class="active" data-translate="nav_home">الرئيسية</a>
+            <a href="#services" data-translate="nav_services">خدماتي</a>
+            <a href="#projects" data-translate="nav_projects">المشاريع</a>
+            <a href="#about" data-translate="nav_about">سيرتي الذاتية</a>
+            <a href="#trust" data-translate="nav_trust">آراء العملاء</a>
+            <a href="#contact" data-translate="nav_contact">تواصل معي</a>
         </nav>
     </header>
 
     <!-- الواجهة الرئيسية (Hero Section) -->
     <section class="hero">
-        <h1>مصمم ومطور ويب محترف<br>& واجهات مستخدم UI/UX</h1>
-        <p>بناء تجارب رقمية غامرة ومبتكرة باستخدام أحدث تقنيات الويب المتقدمة.</p>
+        <h1 data-translate="hero_title">مصمم ومطور ويب محترف<br>& واجهات مستخدم UI/UX</h1>
+        <p data-translate="hero_desc">بناء تجارب رقمية غامرة ومبتكرة باستخدام أحدث تقنيات الويب المتقدمة.</p>
         
         <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">عرض أعمالي</a>
-            <a href="#about" class="btn btn-secondary">السيرة الذاتية</a>
+            <a href="#projects" class="btn btn-primary" data-translate="btn_projects">عرض أعمالي</a>
+            <a href="#about" class="btn btn-secondary" data-translate="btn_cv">السيرة الذاتية</a>
         </div>
 
-        <!-- دوائر السوشيال ميديا الواضحة في الواجهة الرئيسية -->
         <div class="social-circles-container">
             <a href="https://wa.me/249996605719?text=مرحباً،%20أرغب%20في%20التواصل%20معك%20بخصوص%20مشروع%20ويب." target="_blank" class="social-circle whatsapp" title="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://instagram.com" target="_blank" class="social-circle instagram" title="تابعنا على انستغرام"><i class="fa-brands fa-instagram"></i></a>
@@ -886,84 +1161,173 @@
         </div>
     </section>
 
-    <!-- معرض المشاريع المتحرك التلقائي -->
+    <!-- قسم العروض الخاصة (Special Offers) -->
+    <section class="special-offers-section">
+        <div class="special-offers-header">
+            <span data-translate="special_offers">العروض الخاصة (Special Offers)</span>
+        </div>
+        <div class="fixed-discount-banner">
+            <img src="1793023460749.jpg" alt="عرض خصم حتى 50٪">
+        </div>
+    </section>
+
+    <!-- سلايدر الصور (App Banner Slider) -->
+    <section class="categories-marquee-section">
+        <div class="categories-title">
+            <span data-translate="featured_ui">نماذج وتصاميم المواقع (Featured UI)</span>
+        </div>
+
+        <div class="swiper bannerSwiper banner-swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide banner-slide-item"><img src="75199877.jpg" alt="تصميم 1"></div>
+                <div class="swiper-slide banner-slide-item"><img src="17397878.jpg" alt="تصميم 2"></div>
+                <div class="swiper-slide banner-slide-item"><img src="nawa.webp" alt="تصميم 3"></div>
+                <div class="swiper-slide banner-slide-item"><img src="22148246289.jpg" alt="تصميم 4"></div>
+                <div class="swiper-slide banner-slide-item"><img src="1725237092.webp" alt="تصميم 5"></div>
+                <div class="swiper-slide banner-slide-item"><img src="1200_6764101259e9e.jpg" alt="تصميم 6"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- قسم الأقسام والشعارات (Categories) -->
+    <section class="app-categories-section">
+        <div class="app-categories-title">
+            <span data-translate="categories_title">الأقسام الرئيسية (Categories)</span>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h4 data-translate="cat_1">أ موقع لي طعمة ومطاعم</h4>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h4 data-translate="cat_2"> موقع أجهزة وإلكترونيات </h4>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                <h4 data-translate="cat_3"> موقع حلويات وكيك</h4>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                <h4 data-translate="cat_4">متاجر وتطبيقات</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم "خدماتي" أو "ما يمكنني تقديمه لك" (Services) -->
+    <section class="services-section" id="services">
+        <h2 class="section-title"><span data-translate="services_heading_1">خدماتي وما يمكنني</span> <span data-translate="services_heading_2">تقديمه لك</span></h2>
+        <div class="services-grid">
+            <div class="service-box">
+                <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3 data-translate="serv_1_title">تصميم وتطوير واجهات المستخدم</h3>
+                <p data-translate="serv_1_desc">تصميم واجهات عصرية وجذابة باستخدام أحدث المعايير (UI/UX) وتحويلها إلى كود برمجي دقيق وسريع.</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+                <h3 data-translate="serv_2_title">بناء المتاجر الإلكترونية</h3>
+                <p data-translate="serv_2_desc">إنشاء متاجر رقمية متكاملة ومنصات تجارية تدعم عرض المنتجات، السلال، وسهولة تصفح العملاء.</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <h3 data-translate="serv_3_title">تحسين السرعة والأداء</h3>
+                <p data-translate="serv_3_desc">تحسين أداء مواقع الويب وسرعة تحميلها وضمان توافقها التام مع الهواتف الذكية ومحركات البحث (SEO).</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <h3 data-translate="serv_4_title">ربط أنظمة الطلب السريع</h3>
+                <p data-translate="serv_4_desc">تكامل المواقع مع تطبيق الواتساب وأنظمة الطلب المباشر لتسهيل التواصل الفوري مع العملاء وتحقيق المبيعات.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- معرض المشاريع المتحرك التلقائي (الفيديوهات) -->
     <section class="portfolio-section" id="projects">
-        <h2 class="section-title">أبرز <span>المشاريع والتصاميم</span></h2>
+        <h2 class="section-title"><span data-translate="projects_heading_1">أبرز</span> <span data-translate="projects_heading_2">المشاريع والتصاميم</span></h2>
         
+        <!-- أزرار فلترة المشاريع (Project Filter) -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProjects('all')" data-translate="filter_all">الكل</button>
+            <button class="filter-btn" onclick="filterProjects('stores')" data-translate="filter_stores">متاجر</button>
+            <button class="filter-btn" onclick="filterProjects('uiux')" data-translate="filter_uiux">واجهات UI/UX</button>
+            <button class="filter-btn" onclick="filterProjects('saas')" data-translate="filter_saas">تطبيقات SaaS</button>
+        </div>
+
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 
                 <!-- مشروع 1 -->
-                <div class="swiper-slide project-card">
+                <div class="swiper-slide project-card" data-category="uiux">
                     <div class="card-media">
-                        <img src="https://via.placeholder.com/600x400/161b22/00f2fe?text=تحليلات+كوانتم" alt="مشروع تحليلات كوانتم">
-                        <video src="DM me to build an app _AppDevelopment _webdevelopment _SaaS(480P_SD).mp4" loop muted playsinline class="preview-video"></video>
+                        <video src="Ahmad1.mp4" autoplay loop muted playsinline class="card-video"></video>
                     </div>
                     <div class="card-info">
-                        <h3>تحليلات كوانتم المتقدمة</h3>
-                        <p>لوحات تحكم تحليلية متقدمة للبيانات بتصميم نيون عصري ومبتكر.</p>
+                        <h3 data-translate="proj_1_title">تصميم واجهات المستخدم الفاخرة</h3>
+                        <p>#uiuxdesign #uiux #uiux #fyp #explore</p>
                         <button class="btn-link open-modal-btn" 
-                            data-title="تحليلات كوانتم المتقدمة" 
-                            data-desc="لوحات تحكم تحليلية متقدمة للبيانات مصممة خصيصاً للمؤسسات والشركات الكبرى، تتضمن رسوم بيانية تفاعلية، وتحديث للبيانات لحظياً (Real-time)، مع دعم كامل للوضع الداكن وتأثيرات نيون مذهلة تضمن عدم شعور المستخدم بالملل وسهولة الاستخدام." 
-                            data-video="DM me to build an app _AppDevelopment _webdevelopment _SaaS(480P_SD).mp4"
-                            data-tech="React.js, Tailwind CSS, Chart.js, UI/UX Design">
+                            data-title="تصميم واجهات المستخدم الفاخرة" 
+                            data-desc="تصاميم عصرية ومبتكرة للواجهات والتطبيقات، تم التركيز فيها على دراسة تجربة المستخدم وتسهيل التفاعل البصري بتأثيرات نيون مذهلة." 
+                            data-video="Ahmad1.mp4"
+                            data-tech="UI/UX Design, Figma, Tailwind CSS"
+                            data-translate-btn="preview_btn">
                             معاينة المشروع ←
                         </button>
                     </div>
                 </div>
 
                 <!-- مشروع 2 -->
-                <div class="swiper-slide project-card">
+                <div class="swiper-slide project-card" data-category="stores">
                     <div class="card-media">
-                        <img src="https://via.placeholder.com/600x400/161b22/f355da?text=متجر+إلكتروني" alt="مشروع متجر إلكتروني">
-                        <video src="‪_موقع_ويب  _برمجة_مواقع  _برمجة_تطبيقات  _تصميم_مواقع (MP4)_1.mp4" loop muted playsinline class="preview-video"></video>
+                        <video src="Ahmad2.mp4" autoplay loop muted playsinline class="card-video"></video>
                     </div>
                     <div class="card-info">
-                        <h3>متجر فيلوسيتي للإلكترونيات</h3>
-                        <p>واجهة متجر تسوق سلسة وسريعة ومتجاوبة مع مختلف الشاشات.</p>
+                        <h3 data-translate="proj_2_title">تطوير وتصميم مواقع الويب</h3>
+                        <p>#uiuxdesign #uiux #uiux #fyp #explore</p>
                         <button class="btn-link open-modal-btn" 
-                            data-title="متجر فيلوسيتي للإلكترونيات" 
-                            data-desc="منصة تجارة إلكترونية متكاملة تتميز بسرعات تحميل فائقة، وعربة تسوق ديناميكية، ونظام دفع آمن وسهل. تم بناء الواجهة بعناية فائقة لزيادة معدلات التحويل ومضاعفة مبيعات المتاجر." 
-                            data-video="‪_موقع_ويب  _برمجة_مواقع  _برمجة_تطبيقات  _تصميم_مواقع (MP4)_1.mp4"
-                            data-tech="Next.js, Node.js, Stripe API, Neon UI">
+                            data-title="تطوير وتصميم مواقع الويب" 
+                            data-desc="تطوير واجهات أمامية متطورة وسريعة الاستجابة مع دعم كامل لكافة الأجهزة والمنصات الذكية." 
+                            data-video="Ahmad2.mp4"
+                            data-tech="Frontend, HTML5, CSS3, JavaScript"
+                            data-translate-btn="preview_btn">
                             معاينة المشروع ←
                         </button>
                     </div>
                 </div>
 
                 <!-- مشروع 3 -->
-                <div class="swiper-slide project-card">
+                <div class="swiper-slide project-card" data-category="uiux">
                     <div class="card-media">
-                        <img src="https://via.placeholder.com/600x400/161b22/00f2fe?text=نظام+أورا" alt="نظام تصميم أورا">
-                        <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline class="preview-video"></video>
+                        <video src="_uiuxdesign _uiux _uiux _fyp _explore.mp4" autoplay loop muted playsinline class="card-video"></video>
                     </div>
                     <div class="card-info">
-                        <h3>نظام تصميم أورا (Aura UI)</h3>
-                        <p>أساس واجهة المستخدم الموحد والقابل للتوسع في المشاريع الكبرى.</p>
+                        <h3 data-translate="proj_3_title">استكشاف الابتكار الرقمي</h3>
+                        <p>#uiuxdesign #uiux #uiux #fyp #explore</p>
                         <button class="btn-link open-modal-btn" 
-                            data-title="نظام تصميم أورا (Aura UI)" 
-                            data-desc="مكتبة مكونات مرئية وتصميمية متكاملة (Design System) مخصصة لتسريع بناء التطبيقات والمنصات الرقمية بمعايير موحدة وعالية الاحترافية." 
-                            data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                            data-tech="Figma, Storybook, CSS Grid, JavaScript">
+                            data-title="استكشاف الابتكار الرقمي" 
+                            data-desc="تجربة رقمية فريدة تدمج بين الأداء العالي والتصميم الجذاب للشركات والمنصات التقنية الكبرى." 
+                            data-video="_uiuxdesign _uiux _uiux _fyp _explore.mp4"
+                            data-tech="React.js, UI/UX Design, CSS Grid"
+                            data-translate-btn="preview_btn">
                             معاينة المشروع ←
                         </button>
                     </div>
                 </div>
 
                 <!-- مشروع 4 -->
-                <div class="swiper-slide project-card">
+                <div class="swiper-slide project-card" data-category="saas">
                     <div class="card-media">
-                        <img src="https://via.placeholder.com/600x400/161b22/f355da?text=راديو+الموجة" alt="تطبيق راديو الموسيقى">
-                        <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline class="preview-video"></video>
+                        <video src="DM me to build an app _AppDevelopment _webdevelopment _SaaS(480P_SD).mp4" autoplay loop muted playsinline class="card-video"></video>
                     </div>
                     <div class="card-info">
-                        <h3>راديو الموجة الموسيقية</h3>
-                        <p>بث صوتي تفاعلي بواجهة مستخدم ديناميكية ومؤثرات بصرية ساحرة.</p>
+                        <h3 data-translate="proj_4_title">بناء التطبيقات ومنصات SaaS</h3>
+                        <p>DM me to build an app #AppDevelopment #webdevelopment #SaaS</p>
                         <button class="btn-link open-modal-btn" 
-                            data-title="راديو الموجة الموسيقية" 
-                            data-desc="تطبيق بث صوتي تفاعلي يدمج بين المؤثرات الصوتية والبصرية المتحركة بطريقة ديناميكية ممتعة للمستخدمين وتجربة فريدة من نوعها." 
-                            data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                            data-tech="JavaScript Audio API, WebGL, CSS Animations">
+                            data-title="بناء التطبيقات ومنصات SaaS" 
+                            data-desc="تطوير برمجيات ومواقع ويب متكاملة وتطبيقات SaaS احترافية تلبي احتياجات الشركات والأفراد." 
+                            data-video="DM me to build an app _AppDevelopment _webdevelopment _SaaS(480P_SD).mp4"
+                            data-tech="SaaS, App Development, Fullstack, Node.js"
+                            data-translate-btn="preview_btn">
                             معاينة المشروع ←
                         </button>
                     </div>
@@ -978,13 +1342,13 @@
         <div class="modal-content">
             <button class="close-modal" id="closeModalBtn">&times;</button>
             <div class="modal-video-container">
-                <video id="modalVideoPlayer" src="" loop autoplay muted playsinline></video>
+                <video id="modalVideoPlayer" src="" controls autoplay playsinline></video>
             </div>
             <div class="modal-details">
                 <h3 id="modalTitle">عنوان المشروع</h3>
                 <p id="modalDesc">تفاصيل المشروع الكاملة...</p>
                 <div class="modal-tech-stack" id="modalTechStack"></div>
-                <a id="whatsappOrderBtn" href="#" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center;">
+                <a id="whatsappOrderBtn" href="#" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center;" data-translate="modal_order_btn">
                     💬 اطلب تصميم مشروع مشابه عبر الواتساب
                 </a>
             </div>
@@ -995,45 +1359,44 @@
     <section class="about-cv-section" id="about">
         <div class="about-container">
             <div class="about-content">
-                <h2>نحول رؤيتك الرقمية إلى <span>واقع تفاعلي مذهل</span></h2>
-                <p>بصفتي مصمم ومطور واجهات (Frontend Developer & UI/UX Designer)، أساعد الشركات وأصحاب المشاريع الناشئة على بناء هويات رقمية متميزة، تتميز بالسرعة العالية، التصميم الفاخر، وتجربة مستخدم سلسة تضمن أعلى معدلات التحويل والرضا.</p>
+                <h2 data-translate="about_heading">نحول رؤيتك الرقمية إلى <span>واقع تفاعلي مذهل</span></h2>
+                <p data-translate="about_desc">بصفتي مصمم ومطور واجهات (Frontend Developer & UI/UX Designer)، أساعد الشركات وأصحاب المشاريع الناشئة على بناء هويات رقمية متميزة، تتميز بالسرعة العالية، التصميم الفاخر، وتجربة مستخدم سلسة تضمن أعلى معدلات التحويل والرضا.</p>
                 
                 <ul class="features-list">
-                    <li>تصاميم عصرية مخصصة بالكامل (Tailored UI/UX Design)</li>
-                    <li>كود نظيف، متوافق مع محركات البحث (SEO)، وسريع التحميل</li>
-                    <li>تفاعل بصري فريد يمنع شعور الزائر بالملل ويبقيه لفترة أطول</li>
-                    <li>دعم فني كامل ومتجاوب مع جميع الأجهزة والشاشات</li>
+                    <li data-translate="feat_1">تصاميم عصرية مخصصة بالكامل (Tailored UI/UX Design)</li>
+                    <li data-translate="feat_2">كود نظيف، متوافق مع محركات البحث (SEO)، وسريع التحميل</li>
+                    <li data-translate="feat_3">تفاعل بصري فريد يمنع شعور الزائر بالملل ويبقيه لفترة أطول</li>
+                    <li data-translate="feat_4">دعم فني كامل ومتجاوب مع جميع الأجهزة والشاشات</li>
                 </ul>
 
-                <a href="https://wa.me/249996605719?text=مرحباً،%20أرغب%20في%20الاستفسار%20عن%20تصميم%20وبناء%20موقع%20ويب%20خاص%20لمشروعي." target="_blank" class="btn btn-primary">
+                <a href="https://wa.me/249996605719?text=مرحباً،%20أرغب%20في%20الاستفسار%20عن%20تصميم%20وبناء%20موقع%20ويب%20خاص%20لمشروعي." target="_blank" class="btn btn-primary" data-translate="about_whatsapp_btn">
                     💬 تواصل معي عبر الواتساب للبدء
                 </a>
             </div>
 
-            <!-- بطاقة السيرة الذاتية المهنية -->
             <div class="cv-card">
                 <div class="cv-header">
-                    <h3>السيرة الذاتية للمهندس</h3>
-                    <span class="cv-badge">خبرة +5 سنوات</span>
+                    <h3 data-translate="cv_title">السيرة الذاتية للمهندس</h3>
+                    <span class="cv-badge" data-translate="cv_badge">خبرة +5 سنوات</span>
                 </div>
 
                 <div class="cv-timeline">
                     <div class="timeline-item">
-                        <h4>مطور ومصمم ويب رئيسي (Lead Frontend)</h4>
-                        <span>2022 - الآن | مشاريع عالمية ومحلية</span>
-                        <p>قيادة فريق تطوير الواجهات وبناء أنظمة تصميم متكاملة وتحسين الأداء.</p>
+                        <h4 data-translate="job_1_title">مطور ومصمم ويب رئيسي (Lead Frontend)</h4>
+                        <span data-translate="job_1_date">2022 - الآن | مشاريع عالمية ومحلية</span>
+                        <p data-translate="job_1_desc">قيادة فريق تطوير الواجهات وبناء أنظمة تصميم متكاملة وتحسين الأداء.</p>
                     </div>
 
                     <div class="timeline-item">
-                        <h4>أخصائي تجربة المستخدم UI/UX</h4>
-                        <span>2020 - 2022 | وكالة الابتكار الرقمي</span>
-                        <p>تصميم دراسات الحالة ونماذج العمل الأولية (Wireframes) واختبارات المستخدمين.</p>
+                        <h4 data-translate="job_2_title">أخصائي تجربة المستخدم UI/UX</h4>
+                        <span data-translate="job_2_date">2020 - 2022 | وكالة الابتكار الرقمي</span>
+                        <p data-translate="job_2_desc">تصميم دراسات الحالة ونماذج العمل الأولية (Wireframes) واختبارات المستخدمين.</p>
                     </div>
 
                     <div class="timeline-item">
-                        <h4>مطور ويب مستقل (Freelancer)</h4>
+                        <h4 data-translate="job_3_title">مطور ويب مستقل (Freelancer)</h4>
                         <span>2018 - 2020</span>
-                        <p>تسليم أكثر من 40 مشروع متجر إلكتروني وموقع تعريف للعملاء بنجاح تام.</p>
+                        <p data-translate="job_3_desc">تسليم أكثر من 40 مشروع متجر إلكتروني وموقع تعريف للعملاء بنجاح تام.</p>
                     </div>
                 </div>
             </div>
@@ -1042,30 +1405,30 @@
 
     <!-- قسم آراء أصحاب المشاريع والعملاء -->
     <section class="trust-section" id="trust">
-        <h2 class="section-title">ماذا يقول <span>أصحاب المشاريع</span></h2>
+        <h2 class="section-title"><span data-translate="trust_heading_1">ماذا يقول</span> <span data-translate="trust_heading_2">أصحاب المشاريع</span></h2>
         
         <div class="trust-grid">
             <div class="trust-box">
-                <p>"التعامل مع WebSpark نقل موقعنا إلى مستوى آخر تماماً. التصميم الفاخر والتفاعل السريع زاد من مبيعات المتجر بنسبة كبيرة خلال الأسابيع الأولى."</p>
+                <p data-translate="review_1">"التعامل مع WebSpark نقل موقعنا إلى مستوى آخر تماماً. التصميم الفاخر والتفاعل السريع زاد من مبيعات المتجر بنسبة كبيرة خلال الأسابيع الأولى."</p>
                 <div class="client-info">
-                    <h5>عمر الرفاعي</h5>
-                    <span>مدير تنفيذي لمتجر تسوق</span>
+                    <h5 data-translate="client_1_name">عمر الرفاعي</h5>
+                    <span data-translate="client_1_role">مدير تنفيذي لمتجر تسوق</span>
                 </div>
             </div>
 
             <div class="trust-box">
-                <p>"الاهتمام بالتفاصيل ودقة الألوان وتأثيرات النيون جعلت موقعنا يبرز بين المنافسين. أنصح بشدة بالتعامل معه لكل صاحب مشروع جاد."</p>
+                <p data-translate="review_2">"الاهتمام بالتفاصيل ودقة الألوان وتأثيرات النيون جعلت موقعنا يبرز بين المنافسين. أنصح بشدة بالتعامل معه لكل صاحب مشروع جاد."</p>
                 <div class="client-info">
-                    <h5>سارة خالد</h5>
-                    <span>رائدة أعمال ومنصة تقنية</span>
+                    <h5 data-translate="client_2_name">سارة خالد</h5>
+                    <span data-translate="client_2_role">رائدة أعمال ومنصة تقنية</span>
                 </div>
             </div>
 
             <div class="trust-box">
-                <p>"السرعة في التنفيذ والاحترافية العالية في دمج الفيديوهات والتصاميم المتحركة منحتنا تجربة مستخدم لا تنسى للزوار."</p>
+                <p data-translate="review_3">"السرعة في التنفيذ والاحترافية العالية في دمج الفيديوهات والتصاميم المتحركة منحتنا تجربة مستخدم لا تنسى للزوار."</p>
                 <div class="client-info">
-                    <h5>فيصل عبد الله</h5>
-                    <span>مؤسس شركة حلول رقمية</span>
+                    <h5 data-translate="client_3_name">فيصل عبد الله</h5>
+                    <span data-translate="client_3_role">مؤسس شركة حلول رقمية</span>
                 </div>
             </div>
         </div>
@@ -1079,7 +1442,7 @@
             <a href="https://facebook.com" target="_blank" class="social-circle facebook" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://tiktok.com" target="_blank" class="social-circle tiktok" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-        <p>© 2026 WebSpark. جميع الحقوق محفوظة. تم التصميم بكل شغف واحترافية.</p>
+        <p data-translate="footer_text">© 2026 WebSpark. جميع الحقوق محفوظة. تم التصميم بكل شغف واحترافية.</p>
     </footer>
 
     <!-- مكتبة Swiper JS -->
@@ -1111,7 +1474,23 @@
             });
         });
 
-        // 3. تشغيل السلايدر المتحرك التلقائي
+        // 3. تشغيل سلايدر الصور (App Banner Slider)
+        const bannerSwiper = new Swiper('.bannerSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            speed: 800,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.bannerSwiper .swiper-pagination',
+                clickable: true
+            }
+        });
+
+        // 4. تشغيل السلايدر المتحرك التلقائي للمشاريع الفيديوهات
         const swiper = new Swiper('.mySwiper', {
             slidesPerView: 1,
             spaceBetween: 25,
@@ -1128,19 +1507,201 @@
             }
         });
 
-        // 4. تشغيل وإيقاف الفيديو الصغير عند المرور بالماوس في البطاقات
-        document.querySelectorAll('.project-card').forEach(card => {
-            const video = card.querySelector('.preview-video');
-            if (video) {
-                card.addEventListener('mouseenter', () => video.play());
-                card.addEventListener('mouseleave', () => {
-                    video.pause();
-                    video.currentTime = 0;
-                });
-            }
-        });
+        // 5. ميزة فلترة المشاريع (Project Filter)
+        function filterProjects(category) {
+            const slides = document.querySelectorAll('.mySwiper .swiper-slide');
+            const buttons = document.querySelectorAll('.filter-btn');
 
-        // 5. إدارة نافذة معاينة المشروع (Modal Popup)
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            slides.forEach(slide => {
+                const slideCategory = slide.getAttribute('data-category');
+                if (category === 'all' || slideCategory === category) {
+                    slide.style.display = 'block';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+            swiper.update();
+        }
+
+        // 6. زر تبديل اللغة (English / العربية)
+        let currentLang = 'ar';
+        const translations = {
+            ar: {
+                nav_home: "الرئيسية",
+                nav_services: "خدماتي",
+                nav_projects: "المشاريع",
+                nav_about: "سيرتي الذاتية",
+                nav_trust: "آراء العملاء",
+                nav_contact: "تواصل معي",
+                hero_title: "مصمم ومطور ويب محترف<br>& واجهات مستخدم UI/UX",
+                hero_desc: "بناء تجارب رقمية غامرة ومبتكرة باستخدام أحدث تقنيات الويب المتقدمة.",
+                btn_projects: "عرض أعمالي",
+                btn_cv: "السيرة الذاتية",
+                special_offers: "العروض الخاصة (Special Offers)",
+                featured_ui: "نماذج وتصاميم المواقع (Featured UI)",
+                categories_title: "الأقسام الرئيسية (Categories)",
+                cat_1: "أطعمة ومطاعم",
+                cat_2: "أجهزة وإلكترونيات",
+                cat_3: "حلويات وكيك",
+                cat_4: "متاجر وتطبيقات",
+                services_heading_1: "خدماتي وما يمكنني",
+                services_heading_2: "تقديمه لك",
+                serv_1_title: "تصميم وتطوير واجهات المستخدم",
+                serv_1_desc: "تصميم واجهات عصرية وجذابة باستخدام أحدث المعايير (UI/UX) وتحويلها إلى كود برمجي دقيق وسريع.",
+                serv_2_title: "بناء المتاجر الإلكترونية",
+                serv_2_desc: "إنشاء متاجر رقمية متكاملة ومنصات تجارية تدعم عرض المنتجات، السلال، وسهولة تصفح العملاء.",
+                serv_3_title: "تحسين السرعة والأداء",
+                serv_3_desc: "تحسين أداء مواقع الويب وسرعة تحميلها وضمان توافقها التام مع الهواتف الذكية ومحركات البحث (SEO).",
+                serv_4_title: "ربط أنظمة الطلب السريع",
+                serv_4_desc: "تكامل المواقع مع تطبيق الواتساب وأنظمة الطلب المباشر لتسهيل التواصل الفوري مع العملاء وتحقيق المبيعات.",
+                projects_heading_1: "أبرز",
+                projects_heading_2: "المشاريع والتصاميم",
+                filter_all: "الكل",
+                filter_stores: "متاجر",
+                filter_uiux: "واجهات UI/UX",
+                filter_saas: "تطبيقات SaaS",
+                proj_1_title: "تصميم واجهات المستخدم الفاخرة",
+                proj_2_title: "تطوير وتصميم مواقع الويب",
+                proj_3_title: "استكشاف الابتكار الرقمي",
+                proj_4_title: "بناء التطبيقات ومنصات SaaS",
+                preview_btn: "معاينة المشروع ←",
+                modal_order_btn: "💬 اطلب تصميم مشروع مشابه عبر الواتساب",
+                about_heading: "نحول رؤيتك الرقمية إلى <span>واقع تفاعلي مذهل</span>",
+                about_desc: "بصفتي مصمم ومطور واجهات (Frontend Developer & UI/UX Designer)، أساعد الشركات وأصحاب المشاريع الناشئة على بناء هويات رقمية متميزة، تتميز بالسرعة العالية، التصميم الفاخر، وتجربة مستخدم سلسة تضمن أعلى معدلات التحويل والرضا.",
+                feat_1: "تصاميم عصرية مخصصة بالكامل (Tailored UI/UX Design)",
+                feat_2: "كود نظيف، متوافق مع محركات البحث (SEO)، وسريع التحميل",
+                feat_3: "تفاعل بصري فريد يمنع شعور الزائر بالملل ويبقيه لفترة أطول",
+                feat_4: "دعم فني كامل ومتجاوب مع جميع الأجهزة والشاشات",
+                about_whatsapp_btn: "💬 تواصل معي عبر الواتساب للبدء",
+                cv_title: "السيرة الذاتية للمهندس",
+                cv_badge: "خبرة +5 سنوات",
+                job_1_title: "مطور ومصمم ويب رئيسي (Lead Frontend)",
+                job_1_date: "2022 - الآن | مشاريع عالمية ومحلية",
+                job_1_desc: "قيادة فريق تطوير الواجهات وبناء أنظمة تصميم متكاملة وتحسين الأداء.",
+                job_2_title: "أخصائي تجربة المستخدم UI/UX",
+                job_2_date: "2020 - 2022 | وكالة الابتكار الرقمي",
+                job_2_desc: "تصميم دراسات الحالة ونماذج العمل الأولية (Wireframes) واختبارات المستخدمين.",
+                job_3_title: "مطور ويب مستقل (Freelancer)",
+                job_3_desc: "تسليم أكثر من 40 مشروع متجر إلكتروني وموقع تعريف للعملاء بنجاح تام.",
+                trust_heading_1: "ماذا يقول",
+                trust_heading_2: "أصحاب المشاريع",
+                review_1: "\"التعامل مع WebSpark نقل موقعنا إلى مستوى آخر تماماً. التصميم الفاخر والتفاعل السريع زاد من مبيعات المتجر بنسبة كبيرة خلال الأسابيع الأولى.\"",
+                client_1_name: "عمر الرفاعي",
+                client_1_role: "مدير تنفيذي لمتجر تسوق",
+                review_2: "\"الاهتمام بالتفاصيل ودقة الألوان وتأثيرات النيون جعلت موقعنا يبرز بين المنافسين. أنصح بشدة بالتعامل معه لكل صاحب مشروع جاد.\"",
+                client_2_name: "سارة خالد",
+                client_2_role: "رائدة أعمال ومنصة تقنية",
+                review_3: "\"السرعة في التنفيذ والاحترافية العالية في دمج الفيديوهات والتصاميم المتحركة منحتنا تجربة مستخدم لا تنسى للزوار.\"",
+                client_3_name: "فيصل عبد الله",
+                client_3_role: "مؤسس شركة حلول رقمية",
+                footer_text: "© 2026 WebSpark. جميع الحقوق محفوظة. تم التصميم بكل شغف واحترافية."
+            },
+            en: {
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_projects: "Projects",
+                nav_about: "Resume",
+                nav_trust: "Testimonials",
+                nav_contact: "Contact",
+                hero_title: "Professional Web Designer & Developer<br>& UI/UX Designer",
+                hero_desc: "Building immersive and innovative digital experiences using advanced web technologies.",
+                btn_projects: "View My Work",
+                btn_cv: "Resume",
+                special_offers: "Special Offers",
+                featured_ui: "Featured UI Designs",
+                categories_title: "Main Categories",
+                cat_1: "Food & Restaurants",
+                cat_2: "Electronics & Gadgets",
+                cat_3: "Sweets & Cakes",
+                cat_4: "Stores & Apps",
+                services_heading_1: "My Services &",
+                services_heading_2: "What I Offer You",
+                serv_1_title: "UI/UX Design & Implementation",
+                serv_1_desc: "Designing modern, engaging interfaces following latest UI/UX standards and turning them into clean, fast code.",
+                serv_2_title: "E-Commerce Development",
+                serv_2_desc: "Creating full digital stores and commerce platforms supporting product display, cart management, and seamless browsing.",
+                serv_3_title: "Speed & Performance Optimization",
+                serv_3_desc: "Optimizing website performance, load speeds, and ensuring full responsiveness across devices and SEO standards.",
+                serv_4_title: "Quick Order Integration",
+                serv_4_desc: "Integrating websites with WhatsApp and direct ordering systems to facilitate instant customer communication.",
+                projects_heading_1: "Featured",
+                projects_heading_2: "Projects & Designs",
+                filter_all: "All",
+                filter_stores: "Stores",
+                filter_uiux: "UI/UX",
+                filter_saas: "SaaS Apps",
+                proj_1_title: "Luxury UI Design",
+                proj_2_title: "Web Development & Design",
+                proj_3_title: "Digital Innovation Exploration",
+                proj_4_title: "SaaS Apps & Platforms",
+                preview_btn: "Preview Project →",
+                modal_order_btn: "💬 Order a Similar Project via WhatsApp",
+                about_heading: "Turning your digital vision into <span>an amazing interactive reality</span>",
+                about_desc: "As a Frontend Developer & UI/UX Designer, I help startups and businesses build standout digital identities featuring high speed, luxury design, and smooth user experiences.",
+                feat_1: "Tailored Custom UI/UX Designs",
+                feat_2: "Clean, SEO-Friendly & Fast-Loading Code",
+                feat_3: "Unique Visual Interactions That Keep Users Engaged",
+                feat_4: "Full Technical Support & Responsive Layouts",
+                about_whatsapp_btn: "💬 Contact via WhatsApp to Start",
+                cv_title: "Engineer Resume",
+                cv_badge: "5+ Years Experience",
+                job_1_title: "Lead Frontend Developer & Designer",
+                job_1_date: "2022 - Present | Global & Local Projects",
+                job_1_desc: "Leading frontend development teams, building design systems, and boosting performance.",
+                job_2_title: "UI/UX Specialist",
+                job_2_date: "2020 - 2022 | Digital Innovation Agency",
+                job_2_desc: "Designing case studies, wireframes, and managing user testing sessions.",
+                job_3_title: "Freelance Web Developer",
+                job_3_desc: "Successfully delivered over 40 e-commerce and corporate website projects.",
+                trust_heading_1: "What Project",
+                trust_heading_2: "Owners Say",
+                review_1: "\"Working with WebSpark took our website to the next level. The luxury design and fast interaction significantly boosted sales in the first weeks.\"",
+                client_1_name: "Omar Al-Rifaie",
+                client_1_role: "E-Commerce CEO",
+                review_2: "\"Attention to detail, color accuracy, and neon effects made us stand out from competitors. Highly recommended for any serious project.\"",
+                client_2_name: "Sara Khaled",
+                client_2_role: "Tech Entrepreneur",
+                review_3: "\"Speed of execution and high professionalism in integrating videos and animations gave our visitors an unforgettable UX.\"",
+                client_3_name: "Faisal Abdullah",
+                client_3_role: "Digital Solutions Founder",
+                footer_text: "© 2026 WebSpark. All rights reserved. Designed with passion and professionalism."
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlRoot = document.getElementById('html-root');
+            const langBtn = document.getElementById('langToggleBtn');
+
+            if (currentLang === 'en') {
+                htmlRoot.setAttribute('lang', 'en');
+                htmlRoot.setAttribute('dir', 'ltr');
+                langBtn.textContent = 'العربية';
+            } else {
+                htmlRoot.setAttribute('lang', 'ar');
+                htmlRoot.setAttribute('dir', 'rtl');
+                langBtn.textContent = 'English';
+            }
+
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-translate-btn]').forEach(el => {
+                const key = el.getAttribute('data-translate-btn');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        // 7. إدارة نافذة معاينة المشروع (Modal Popup) مع الصوت والتحكم الكامل
         const modal = document.getElementById('projectModal');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const modalVideoPlayer = document.getElementById('modalVideoPlayer');
@@ -1188,5 +1749,5 @@
             if (e.target === modal) closeModal();
         });
     </script>
-</body>
+    </body>
 </html>
