@@ -3,213 +3,1188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="google-site-verification" content="ioNqPIr87h4yJwvagSyezVLwdZ2nr-TIhWAvJdCruGA" />
+    <title>WebSpark | معرض أعمال مصمم ومطور الويب</title>
 
-    <title>GlobalX Pro | Currency Converter - أسعار العملات لحظة بلحظة</title>
-    <meta name="description" content="Exchange rates for USD, EUR, SAR, SDG, EGP, QAR, KWD, LYD, OMR, and BTC. أسعار الدولار، اليورو، الريال، الدينار، والبيتكوين.">
-    
-    <meta name="keywords" content="سعر الدولار اليوم, سعر البيتكوين في السودان, ريال قطري مقابل جنيه سوداني, دينار كويتي, دينار ليبي, ريال عماني, سعر اليورو, BTC to SDG, QAR to SDG, KWD to SDG, LYD to SDG, OMR to SDG, السودان، السعودية، مصر، قطر، الكويت، ليبيا، عمان">
+    <!-- خط كايرو العربي من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
-    <script type='text/javascript' src='//pl28679629.effectivegatecpm.com/5f/4a/cc/5f4acccab55bd0f346aab5f4e151034b.js'></script>
+    <!-- مكتبة FontAwesome لأيقونات السوشيال ميديا -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        // نظام الإعلان المطور: يمنع الفتح المتكرر بشكل نهائي لمدة 24 ساعة
-        document.addEventListener('click', function() {
-            const adKey = 'globalx_ad_limit';
-            const lastOpened = localStorage.getItem(adKey);
-            const now = new Date().getTime();
+    <!-- مكتبة Swiper CSS للسلايدر -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-            if (!lastOpened || (now - lastOpened) > 24 * 60 * 60 * 1000) {
-                localStorage.setItem(adKey, now);
-            } else {
-                window.onbeforeunload = null;
-                if(typeof window.popunder !== 'undefined') window.popunder = null;
-            }
-        });
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <!-- التنسيقات الشاملة (CSS) -->
     <style>
-        :root { --gold: #c5a059; --dark: #0f172a; --card: rgba(255, 255, 255, 0.05); --ad-bg: rgba(255, 255, 255, 0.02); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
-        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; min-height: 100vh; cursor: pointer; }
-        header { padding: 30px 20px; text-align: center; border-bottom: 2px solid var(--gold); background: rgba(15, 23, 42, 0.8); }
-        .logo { font-size: 2.5rem; font-weight: 700; color: var(--gold); }
-        .img-container { width: 100%; max-width: 800px; margin: 0 auto; opacity: 0.6; }
-        .currency-img { width: 100%; height: auto; border-radius: 0 0 50px 50px; }
-        .container { max-width: 1000px; margin: -50px auto 20px; padding: 20px; position: relative; z-index: 5; }
-        
-        .ad-space { 
-            background: var(--ad-bg); 
-            border: 1px dashed rgba(197, 160, 89, 0.2); 
-            margin: 20px auto; 
-            padding: 10px; 
-            text-align: center; 
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 60px;
+        :root {
+            --bg-color: #0a0d14;
+            --card-bg: rgba(15, 20, 30, 0.75);
+            --cyan-neon: #00f2fe;
+            --purple-neon: #f355da;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
-        .lang-switch { text-align: left; margin-bottom: 15px; }
-        .lang-btn { background: var(--gold); border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; color: #0f172a; transition: 0.3s; }
-        .converter-card { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 24px; padding: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .input-box { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        label { color: var(--gold); font-weight: bold; font-size: 0.9rem; }
-        input, select { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 15px; border-radius: 12px; color: white; font-size: 1.1rem; outline: none; cursor: pointer; }
-        option { background: #1e293b; color: white; }
-        .result-container { margin-top: 30px; text-align: center; padding: 30px; border-radius: 15px; background: rgba(197, 160, 89, 0.1); border: 1px solid var(--gold); }
-        .res-value { font-size: 2.8rem; font-weight: 700; color: #fff; }
-        .status-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; margin-top: 10px; background: rgba(255,255,255,0.05); color: var(--gold); border: 1px solid var(--gold); }
-        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.8rem; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* شاشة التحميل والدخول (Splash Screen) بلون الخلفية المطلوب #2b2b2b */
+        /* ------------------------------------------------------------- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #2b2b2b; /* اللون المطلوب لخلفية شاشة الدخول */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-logo-container {
+            text-align: center;
+            animation: pulseSplash 1.8s infinite alternate ease-in-out;
+        }
+
+        .splash-logo-img {
+            width: 280px; /* حجم كبير وواضح للصورة المطلوبة مع الرمز والنصوص */
+            height: auto;
+            max-width: 85vw;
+            border-radius: 16px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes pulseSplash {
+            0% { transform: scale(0.97); opacity: 0.9; }
+            100% { transform: scale(1.03); opacity: 1; }
+        }
+
+        /* ------------------------------------------------------------- */
+        /* خلفية نيون مطابقة تماماً للصورة الأولى (خطوط حادة مائلة ومضيئة) */
+        /* ------------------------------------------------------------- */
+        .neon-background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -5;
+            overflow: hidden;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 40%, #121824 0%, #07090e 100%);
+        }
+
+        /* خط نيون أزرق مائل في الجانب الأيسر علوي */
+        .neon-line-left {
+            position: absolute;
+            top: -20vh;
+            left: -10vw;
+            width: 60vw;
+            height: 140vh;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(0, 242, 254, 0.02) 50%, transparent 70%);
+            transform: rotate(-32deg);
+            clip-path: polygon(0 0, 100% 0, 40% 100%, 0 100%);
+        }
+
+        .neon-glow-line-cyan {
+            position: absolute;
+            top: 10vh;
+            left: -5vw;
+            width: 2px;
+            height: 120vh;
+            background: var(--cyan-neon);
+            box-shadow: 0 0 15px var(--cyan-neon), 0 0 30px var(--cyan-neon);
+            transform: rotate(-32deg);
+            opacity: 0.8;
+        }
+
+        /* خط نيون بنفسجي مائل في الجانب الأيمن سفلي */
+        .neon-line-right {
+            position: absolute;
+            bottom: -20vh;
+            right: -10vw;
+            width: 60vw;
+            height: 140vh;
+            background: linear-gradient(135deg, transparent 30%, rgba(243, 85, 218, 0.03) 50%, rgba(243, 85, 218, 0.15) 100%);
+            transform: rotate(-32deg);
+            clip-path: polygon(60% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .neon-glow-line-pink {
+            position: absolute;
+            bottom: 10vh;
+            right: -5vw;
+            width: 2px;
+            height: 120vh;
+            background: var(--purple-neon);
+            box-shadow: 0 0 15px var(--purple-neon), 0 0 30px var(--purple-neon);
+            transform: rotate(-32deg);
+            opacity: 0.8;
+        }
+
+        /* شريط الملاحة (Header) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            background: rgba(10, 13, 20, 0.75);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img-header {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.5));
+        }
+
+        .logo-text h2 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 30%, var(--cyan-neon) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--cyan-neon);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+        }
+
+        /* دوائر السوشيال ميديا المضيئة */
+        .social-icons-header {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .social-circles-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-circle {
+            width: 45px;
+            height: 45px;
+            background: rgba(18, 24, 34, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.35s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .social-circle:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--cyan-neon);
+            color: var(--cyan-neon);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+        }
+
+        .social-circle.whatsapp:hover { border-color: #25d366; color: #25d366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); }
+        .social-circle.instagram:hover { border-color: #e1306c; color: #e1306c; box-shadow: 0 0 20px rgba(225, 48, 108, 0.5); }
+        .social-circle.tiktok:hover { border-color: #ff0050; color: #ff0050; box-shadow: 0 0 20px rgba(255, 0, 80, 0.5); }
+        .social-circle.facebook:hover { border-color: #1877f2; color: #1877f2; box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background: var(--cyan-neon);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(180deg, #ffffff 20%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--cyan-neon);
+            color: #0b0f17;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--purple-neon);
+            color: var(--purple-neon);
+            box-shadow: 0 0 20px rgba(243, 85, 218, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* قسم المعرض المتحرك للمشاريع */
+        .portfolio-section {
+            padding: 70px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--cyan-neon), var(--purple-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 20px 10px 45px !important;
+        }
+
+        /* بطاقات المشاريع الفخمة */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card:hover {
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.35), 0 0 50px rgba(243, 85, 218, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .card-media {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #161b22;
+        }
+
+        .card-media img, 
+        .card-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .card-media img {
+            transform: scale(1.05);
+        }
+
+        .preview-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .preview-video {
+            opacity: 1;
+        }
+
+        .card-info {
+            padding: 22px;
+            text-align: right;
+        }
+
+        .card-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .card-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .card-info .btn-link {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--cyan-neon);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card-info .btn-link:hover {
+            background: var(--cyan-neon);
+            color: #0b0f17;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+        }
+
+        /* نافذة معاينة المشروع (Modal Popup) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 8, 13, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #121822;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--purple-neon);
+            border-color: var(--purple-neon);
+        }
+
+        .modal-video-container {
+            width: 100%;
+            height: 380px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .modal-details p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .modal-tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .tech-tag {
+            background: rgba(243, 85, 218, 0.1);
+            color: var(--purple-neon);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(243, 85, 218, 0.2);
+        }
+
+        /* قسم السيرة الذاتية (About & CV) بخلفية متناسقة وشافة */
+        .about-cv-section {
+            padding: 90px 8%;
+            background: rgba(15, 20, 30, 0.4);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-content h2 span {
+            background: linear-gradient(135deg, var(--cyan-neon), var(--purple-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        .features-list li::before {
+            content: '✔';
+            position: absolute;
+            right: 0;
+            color: var(--cyan-neon);
+            font-weight: bold;
+        }
+
+        .cv-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--cyan-neon), var(--purple-neon));
+        }
+
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .cv-header h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .cv-badge {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--cyan-neon);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .cv-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-right: 20px;
+            border-right: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item h4 {
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item span {
+            font-size: 0.8rem;
+            color: var(--cyan-neon);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* قسم آراء العملاء والثقة */
+        .trust-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .trust-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: right;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        .trust-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .client-info h5 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .client-info span {
+            color: var(--cyan-neon);
+            font-size: 0.8rem;
+        }
+
+        /* الفوتر الاحترافي */
+        footer {
+            padding: 40px 5%;
+            background: rgba(8, 11, 17, 0.9);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* التجاوب مع شاشات الهواتف والموبايل */
+        @media (max-width: 900px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
 
         @media (max-width: 768px) {
-            .ad-space iframe { max-width: 100% !important; transform: scale(0.9); }
-            .converter-card { padding: 20px; }
-            .res-value { font-size: 2rem; }
+            .menu-toggle {
+                display: flex;
+            }
+
+            .social-icons-header {
+                display: none;
+            }
+
+            nav {
+                position: fixed;
+                top: 75px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 75px);
+                background: rgba(11, 15, 23, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 25px;
+                transition: right 0.4s ease-in-out;
+                border-left: 1px solid var(--border-color);
+            }
+
+            nav.active { right: 0; }
+            nav a { font-size: 1.2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .cta-buttons { flex-direction: column; padding: 0 20px; }
         }
     </style>
 </head>
-<body onclick="void(0);"> 
-<header>
-    <div class="logo" id="mainTitle">GLOBALX PRO</div>
-    <p style="color: #94a3b8;" id="subTitle">أسعار العملات العالمية بالسوق الموازي | Real-time Parallel Market Rates</p>
-</header>
+<body>
 
-<div class="img-container">
-    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1374&auto=format&fit=crop" class="currency-img">
-</div>
-
-<div class="container">
-    <div class="ad-space" id="adTop">
-        <script type="text/javascript">
-            atOptions = { 'key' : '535eda41df9f46b0d693f58a91ef95cb', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-            if (window.innerWidth < 768) { atOptions.width = 320; atOptions.height = 50; }
-        </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/535eda41df9f46b0d693f58a91ef95cb/invoke.js"></script>
-    </div>
-    
-    <div class="lang-switch"><button class="lang-btn" onclick="toggleLang()" id="langBtn">English</button></div>
-
-    <div class="converter-card">
-        <div class="input-box">
-            <label id="lblAmount">المبلغ (Amount)</label>
-            <input type="number" id="amount" placeholder="1" oninput="calculate()">
-        </div>
-
-        <div class="grid">
-            <div class="input-box">
-                <label id="lblFrom">من عملة (From)</label>
-                <select id="from" onchange="calculate()">
-                    <option value="" disabled selected id="optFrom">-- اختر العملة Select --</option>
-                    <option value="USD">🇺🇸 Dollar - دولار</option>
-                    <option value="EUR">🇪🇺 Euro - يورو</option>
-                    <option value="SAR">🇸🇦 Saudi Riyal - ريال سعودي</option>
-                    <option value="AED">🇦🇪 UAE Dirham - درهم إماراتي</option>
-                    <option value="SDG">🇸🇩 Sudanese Pound - جنيه سوداني</option>
-                    <option value="EGP">🇪🇬 Egyptian Pound - جنيه مصري</option>
-                    <option value="GBP">🇬🇧 Pound Sterling - جنيه إسترليني</option>
-                    <option value="TRY">🇹🇷 Turkish Lira - ليرة تركية</option>
-                    <option value="QAR">🇶🇦 Qatari Riyal - ريال قطري</option>
-                    <option value="KWD">🇰🇼 Kuwaiti Dinar - دينار كويتي</option>
-                    <option value="LYD">🇱🇾 Libyan Dinar - دينار ليبي</option>
-                    <option value="OMR">🇴🇲 Omani Rial - ريال عماني</option>
-                    <option value="BTC">₿ Bitcoin - بيتكوين</option>
-                </select>
-            </div>
-            <div class="input-box">
-                <label id="lblTo">إلى عملة (To)</label>
-                <select id="to" onchange="calculate()">
-                    <option value="" disabled selected id="optTo">-- اختر العملة Select --</option>
-                    <option value="SDG">🇸🇩 Sudanese Pound - جنيه سوداني</option>
-                    <option value="USD">🇺🇸 Dollar - دولار</option>
-                    <option value="EUR">🇪🇺 Euro - يورو</option>
-                    <option value="SAR">🇸🇦 Saudi Riyal - ريال سعودي</option>
-                    <option value="AED">🇦🇪 UAE Dirham - درهم إماراتي</option>
-                    <option value="EGP">🇪🇬 Egyptian Pound - جنيه مصري</option>
-                    <option value="TRY">🇹🇷 Turkish Lira - ليرة تركية</option>
-                    <option value="QAR">🇶🇦 Qatari Riyal - ريال قطري</option>
-                    <option value="KWD">🇰🇼 Kuwaiti Dinar - دينار كويتي</option>
-                    <option value="LYD">🇱🇾 Libyan Dinar - دينار ليبي</option>
-                    <option value="OMR">🇴🇲 Omani Rial - ريال عماني</option>
-                    <option value="BTC">₿ Bitcoin - بيتكوين</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="result-container">
-            <div id="resLabel" style="color: var(--gold); margin-bottom: 10px;">بانتظار المدخلات...</div>
-            <div class="res-value" id="resValue">0.00</div>
-            <div id="marketStatus" class="status-badge" style="display:none;">تحليل حالة السوق...</div>
+    <!-- شاشة التحميل والدخول (Splash Screen) بالصورة الجديدة وخلفية #2b2b2b -->
+    <div id="splash-screen">
+        <div class="splash-logo-container">
+            <img src="1000814885.jpg" alt="WebSpark Logo" class="splash-logo-img">
         </div>
     </div>
-</div>
 
-<footer>
-    <p id="footerText">© 2026 GlobalX Finance | دقة السوق الموازي العالمية</p>
-</footer>
+    <!-- الخلفية الموحدة مع خطوط وزوايا النيون المائلة المضاءة (مطابقة للصورة الأولى) -->
+    <div class="neon-background-container">
+        <div class="neon-line-left"></div>
+        <div class="neon-glow-line-cyan"></div>
+        <div class="neon-line-right"></div>
+        <div class="neon-glow-line-pink"></div>
+    </div>
 
-<script>
-    let currentLang = 'ar';
+    <!-- شريط الملاحة والهيدر -->
+    <header>
+        <a href="#" class="logo-container">
+            <img src="1000814885.jpg" alt="WebSpark Logo" class="logo-img-header">
+            <div class="logo-text">
+                <h2>WebSpark</h2>
+                <span>Digital Solutions</span>
+            </div>
+        </a>
 
-    // محرك معاملات السوق الموازي لجميع العملات المتأثرة
-    const getMarketFactor = (currency) => {
-        const factors = {
-            'SDG': 6.38,  // معامل الجنيه السوداني (ليصل لـ 3450 للدولار)
-            'EGP': 1.12,  // معامل الجنيه المصري (للسوق الموازي)
-            'LYD': 1.20,  // معامل الدينار الليبي
-            'TRY': 1.05   // معامل الليرة التركية
+        <!-- أيقونات السوشيال ميديا في الهيدر -->
+        <div class="social-icons-header">
+            <a href="https://wa.me/249996605719" target="_blank" class="social-circle whatsapp" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-circle instagram" title="انستغرام"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-circle facebook" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="social-circle tiktok" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+
+        <!-- زر القائمة الثلاثية للموبايل -->
+        <button class="menu-toggle" id="mobile-menu" aria-label="فتح القائمة">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="nav-menu">
+            <a href="#" class="active">الرئيسية</a>
+            <a href="#projects">المشاريع</a>
+            <a href="#about">سيرتي الذاتية</a>
+            <a href="#trust">آراء العملاء</a>
+            <a href="#contact">تواصل معي</a>
+        </nav>
+    </header>
+
+    <!-- الواجهة الرئيسية (Hero Section) -->
+    <section class="hero">
+        <h1>مصمم ومطور ويب محترف<br>& واجهات مستخدم UI/UX</h1>
+        <p>بناء تجارب رقمية غامرة ومبتكرة باستخدام أحدث تقنيات الويب المتقدمة.</p>
+        
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">عرض أعمالي</a>
+            <a href="#about" class="btn btn-secondary">السيرة الذاتية</a>
+        </div>
+
+        <!-- دوائر السوشيال ميديا الواضحة في الواجهة الرئيسية -->
+        <div class="social-circles-container">
+            <a href="https://wa.me/249996605719?text=مرحباً،%20أرغب%20في%20التواصل%20معك%20بخصوص%20مشروع%20ويب." target="_blank" class="social-circle whatsapp" title="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-circle instagram" title="تابعنا على انستغرام"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-circle facebook" title="تابعنا على فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="social-circle tiktok" title="تابعنا على تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </section>
+
+    <!-- معرض المشاريع المتحرك التلقائي -->
+    <section class="portfolio-section" id="projects">
+        <h2 class="section-title">أبرز <span>المشاريع والتصاميم</span></h2>
+        
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <!-- مشروع 1 -->
+                <div class="swiper-slide project-card">
+                    <div class="card-media">
+                        <img src="https://via.placeholder.com/600x400/161b22/00f2fe?text=تحليلات+كوانتم" alt="مشروع تحليلات كوانتم">
+                        <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline class="preview-video"></video>
+                    </div>
+                    <div class="card-info">
+                        <h3>تحليلات كوانتم المتقدمة</h3>
+                        <p>لوحات تحكم تحليلية متقدمة للبيانات بتصميم نيون عصري ومبتكر.</p>
+                        <button class="btn-link open-modal-btn" 
+                            data-title="تحليلات كوانتم المتقدمة" 
+                            data-desc="لوحات تحكم تحليلية متقدمة للبيانات مصممة خصيصاً للمؤسسات والشركات الكبرى، تتضمن رسوم بيانية تفاعلية، وتحديث للبيانات لحظياً (Real-time)، مع دعم كامل للوضع الداكن وتأثيرات نيون مذهلة تضمن عدم شعور المستخدم بالملل وسهولة الاستخدام." 
+                            data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                            data-tech="React.js, Tailwind CSS, Chart.js, UI/UX Design">
+                            معاينة المشروع ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- مشروع 2 -->
+                <div class="swiper-slide project-card">
+                    <div class="card-media">
+                        <img src="https://via.placeholder.com/600x400/161b22/f355da?text=متجر+إلكتروني" alt="مشروع متجر إلكتروني">
+                        <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline class="preview-video"></video>
+                    </div>
+                    <div class="card-info">
+                        <h3>متجر فيلوسيتي للإلكترونيات</h3>
+                        <p>واجهة متجر تسوق سلسة وسريعة ومتجاوبة مع مختلف الشاشات.</p>
+                        <button class="btn-link open-modal-btn" 
+                            data-title="متجر فيلوسيتي للإلكترونيات" 
+                            data-desc="منصة تجارة إلكترونية متكاملة تتميز بسرعات تحميل فائقة، وعربة تسوق ديناميكية، ونظام دفع آمن وسهل. تم بناء الواجهة بعناية فائقة لزيادة معدلات التحويل ومضاعفة مبيعات المتاجر." 
+                            data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                            data-tech="Next.js, Node.js, Stripe API, Neon UI">
+                            معاينة المشروع ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- مشروع 3 -->
+                <div class="swiper-slide project-card">
+                    <div class="card-media">
+                        <img src="https://via.placeholder.com/600x400/161b22/00f2fe?text=نظام+أورا" alt="نظام تصميم أورا">
+                        <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline class="preview-video"></video>
+                    </div>
+                    <div class="card-info">
+                        <h3>نظام تصميم أورا (Aura UI)</h3>
+                        <p>أساس واجهة المستخدم الموحد والقابل للتوسع في المشاريع الكبرى.</p>
+                        <button class="btn-link open-modal-btn" 
+                            data-title="نظام تصميم أورا (Aura UI)" 
+                            data-desc="مكتبة مكونات مرئية وتصميمية متكاملة (Design System) مخصصة لتسريع بناء التطبيقات والمنصات الرقمية بمعايير موحدة وعالية الاحترافية." 
+                            data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                            data-tech="Figma, Storybook, CSS Grid, JavaScript">
+                            معاينة المشروع ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- مشروع 4 -->
+                <div class="swiper-slide project-card">
+                    <div class="card-media">
+                        <img src="https://via.placeholder.com/600x400/161b22/f355da?text=راديو+الموجة" alt="تطبيق راديو الموسيقى">
+                        <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline class="preview-video"></video>
+                    </div>
+                    <div class="card-info">
+                        <h3>راديو الموجة الموسيقية</h3>
+                        <p>بث صوتي تفاعلي بواجهة مستخدم ديناميكية ومؤثرات بصرية ساحرة.</p>
+                        <button class="btn-link open-modal-btn" 
+                            data-title="راديو الموجة الموسيقية" 
+                            data-desc="تطبيق بث صوتي تفاعلي يدمج بين المؤثرات الصوتية والبصرية المتحركة بطريقة ديناميكية ممتعة للمستخدمين وتجربة فريدة من نوعها." 
+                            data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                            data-tech="JavaScript Audio API, WebGL, CSS Animations">
+                            معاينة المشروع ←
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة معاينة المشروع (Modal Popup) -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModalBtn">&times;</button>
+            <div class="modal-video-container">
+                <video id="modalVideoPlayer" src="" loop autoplay muted playsinline></video>
+            </div>
+            <div class="modal-details">
+                <h3 id="modalTitle">عنوان المشروع</h3>
+                <p id="modalDesc">تفاصيل المشروع الكاملة...</p>
+                <div class="modal-tech-stack" id="modalTechStack"></div>
+                <a id="whatsappOrderBtn" href="#" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center;">
+                    💬 اطلب تصميم مشروع مشابه عبر الواتساب
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم السيرة الذاتية (About & CV) -->
+    <section class="about-cv-section" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>نحول رؤيتك الرقمية إلى <span>واقع تفاعلي مذهل</span></h2>
+                <p>بصفتي مصمم ومطور واجهات (Frontend Developer & UI/UX Designer)، أساعد الشركات وأصحاب المشاريع الناشئة على بناء هويات رقمية متميزة، تتميز بالسرعة العالية، التصميم الفاخر، وتجربة مستخدم سلسة تضمن أعلى معدلات التحويل والرضا.</p>
+                
+                <ul class="features-list">
+                    <li>تصاميم عصرية مخصصة بالكامل (Tailored UI/UX Design)</li>
+                    <li>كود نظيف، متوافق مع محركات البحث (SEO)، وسريع التحميل</li>
+                    <li>تفاعل بصري فريد يمنع شعور الزائر بالملل ويبقيه لفترة أطول</li>
+                    <li>دعم فني كامل ومتجاوب مع جميع الأجهزة والشاشات</li>
+                </ul>
+
+                <a href="https://wa.me/249996605719?text=مرحباً،%20أرغب%20في%20الاستفسار%20عن%20تصميم%20وبناء%20موقع%20ويب%20خاص%20لمشروعي." target="_blank" class="btn btn-primary">
+                    💬 تواصل معي عبر الواتساب للبدء
+                </a>
+            </div>
+
+            <!-- بطاقة السيرة الذاتية المهنية -->
+            <div class="cv-card">
+                <div class="cv-header">
+                    <h3>السيرة الذاتية للمهندس</h3>
+                    <span class="cv-badge">خبرة +5 سنوات</span>
+                </div>
+
+                <div class="cv-timeline">
+                    <div class="timeline-item">
+                        <h4>مطور ومصمم ويب رئيسي (Lead Frontend)</h4>
+                        <span>2022 - الآن | مشاريع عالمية ومحلية</span>
+                        <p>قيادة فريق تطوير الواجهات وبناء أنظمة تصميم متكاملة وتحسين الأداء.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>أخصائي تجربة المستخدم UI/UX</h4>
+                        <span>2020 - 2022 | وكالة الابتكار الرقمي</span>
+                        <p>تصميم دراسات الحالة ونماذج العمل الأولية (Wireframes) واختبارات المستخدمين.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>مطور ويب مستقل (Freelancer)</h4>
+                        <span>2018 - 2020</span>
+                        <p>تسليم أكثر من 40 مشروع متجر إلكتروني وموقع تعريف للعملاء بنجاح تام.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم آراء أصحاب المشاريع والعملاء -->
+    <section class="trust-section" id="trust">
+        <h2 class="section-title">ماذا يقول <span>أصحاب المشاريع</span></h2>
+        
+        <div class="trust-grid">
+            <div class="trust-box">
+                <p>"التعامل مع WebSpark نقل موقعنا إلى مستوى آخر تماماً. التصميم الفاخر والتفاعل السريع زاد من مبيعات المتجر بنسبة كبيرة خلال الأسابيع الأولى."</p>
+                <div class="client-info">
+                    <h5>عمر الرفاعي</h5>
+                    <span>مدير تنفيذي لمتجر تسوق</span>
+                </div>
+            </div>
+
+            <div class="trust-box">
+                <p>"الاهتمام بالتفاصيل ودقة الألوان وتأثيرات النيون جعلت موقعنا يبرز بين المنافسين. أنصح بشدة بالتعامل معه لكل صاحب مشروع جاد."</p>
+                <div class="client-info">
+                    <h5>سارة خالد</h5>
+                    <span>رائدة أعمال ومنصة تقنية</span>
+                </div>
+            </div>
+
+            <div class="trust-box">
+                <p>"السرعة في التنفيذ والاحترافية العالية في دمج الفيديوهات والتصاميم المتحركة منحتنا تجربة مستخدم لا تنسى للزوار."</p>
+                <div class="client-info">
+                    <h5>فيصل عبد الله</h5>
+                    <span>مؤسس شركة حلول رقمية</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر مع أيقونات التواصل الاجتماعي -->
+    <footer id="contact">
+        <div class="footer-social">
+            <a href="https://wa.me/249996605719" target="_blank" class="social-circle whatsapp" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-circle instagram" title="انستغرام"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-circle facebook" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="social-circle tiktok" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <p>© 2026 WebSpark. جميع الحقوق محفوظة. تم التصميم بكل شغف واحترافية.</p>
+    </footer>
+
+    <!-- مكتبة Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- كود الجافاسكريبت التشغيلي الشامل -->
+    <script>
+        // 1. إخفاء شاشة التحميل (Splash Screen) بعد 3 ثوانٍ
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                splash.classList.add('fade-out');
+            }, 3000);
+        });
+
+        // 2. تفعيل القائمة الجانبية للموبايل (Hamburger Menu)
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('open');
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('open');
+            });
+        });
+
+        // 3. تشغيل السلايدر المتحرك التلقائي
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 25,
+            loop: true,
+            speed: 3500,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        // 4. تشغيل وإيقاف الفيديو الصغير عند المرور بالماوس في البطاقات
+        document.querySelectorAll('.project-card').forEach(card => {
+            const video = card.querySelector('.preview-video');
+            if (video) {
+                card.addEventListener('mouseenter', () => video.play());
+                card.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            }
+        });
+
+        // 5. إدارة نافذة معاينة المشروع (Modal Popup)
+        const modal = document.getElementById('projectModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalTechStack = document.getElementById('modalTechStack');
+        const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
+
+        document.querySelectorAll('.open-modal-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = btn.getAttribute('data-title');
+                const desc = btn.getAttribute('data-desc');
+                const videoSrc = btn.getAttribute('data-video');
+                const techs = btn.getAttribute('data-tech').split(', ');
+
+                modalTitle.textContent = title;
+                modalDesc.textContent = desc;
+                modalVideoPlayer.src = videoSrc;
+                modalVideoPlayer.play();
+
+                modalTechStack.innerHTML = '';
+                techs.forEach(tech => {
+                    const span = document.createElement('span');
+                    span.className = 'tech-tag';
+                    span.textContent = tech;
+                    modalTechStack.appendChild(span);
+                });
+
+                const waMessage = encodeURIComponent(`مرحباً، شاهدت مشروع "${title}" في موقعك وأرغب في طلب تصميم وتطوير موقع مشابه له.`);
+                whatsappOrderBtn.href = `https://wa.me/249996605719?text=${waMessage}`;
+
+                modal.classList.add('active');
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            modalVideoPlayer.pause();
+            modalVideoPlayer.src = '';
         };
-        return factors[currency] || 1.0;
-    };
 
-    async function calculate() {
-        const amt = document.getElementById('amount').value;
-        const from = document.getElementById('from').value;
-        const to = document.getElementById('to').value;
-        const display = document.getElementById('resValue');
-        
-        if (!amt || !from || !to) return;
-        
-        try {
-            const res = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
-            const data = await res.json();
-            let rate = data.rates[to];
-            
-            // تطبيق السعر الحقيقي (الموازي) للعملة المحول إليها
-            rate = rate * getMarketFactor(to);
-            
-            // إزالة تأثير السعر الرسمي للعملة المحول منها إذا كانت عملة سوق موازي
-            rate = rate / getMarketFactor(from);
-
-            display.innerText = (amt * rate).toLocaleString(undefined, {
-                minimumFractionDigits: from === "BTC" || to === "BTC" ? 8 : 2,
-                maximumFractionDigits: from === "BTC" || to === "BTC" ? 8 : 2
-            }) + " " + to;
-            
-            document.getElementById('marketStatus').style.display = 'inline-block';
-            document.getElementById('marketStatus').innerText = currentLang === 'ar' ? "💡 تم التحديث لسعر السوق الحقيقي" : "💡 Real Market Price Updated";
-            
-        } catch (e) { 
-            display.innerText = "Error"; 
-        }
-    }
-
-    function toggleLang() {
-        const isAr = currentLang === 'ar';
-        currentLang = isAr ? 'en' : 'ar';
-        document.documentElement.dir = isAr ? 'ltr' : 'rtl';
-        document.getElementById('lblAmount').innerText = isAr ? "Amount" : "المبلغ";
-        document.getElementById('lblFrom').innerText = isAr ? "From Currency" : "من عملة";
-        document.getElementById('lblTo').innerText = isAr ? "To Currency" : "إلى عملة";
-        document.getElementById('langBtn').innerText = isAr ? "العربية" : "English";
-        document.getElementById('resLabel').innerText = isAr ? "Real Market Result:" : "النتيجة بسعر السوق:";
-        calculate();
-    }
-</script>
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
 </body>
 </html>
